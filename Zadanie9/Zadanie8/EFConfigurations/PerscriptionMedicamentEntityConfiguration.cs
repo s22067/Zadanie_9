@@ -12,21 +12,64 @@ namespace Zadanie8.EFConfigurations
     {
         public void Configure(EntityTypeBuilder<PrescriptionMedicament> builder)
         {
-            builder.ToTable("PerscriptionMedicament");
+            builder.HasKey(e => new
+            {
+                e.IdMedicament,
+                e.IdPrescription
+            }).HasName("PrescriptionMedicamend_PK");
 
-            builder.HasKey(e => new { e.IdPrescription, e.IdMedicament });
+            builder.ToTable("Prescription_Medicament");
 
-            builder.Property(e => e.Details).IsRequired().HasMaxLength(100);
+            builder.Property(e => e.Dose);
+            builder.Property(e => e.Details).HasMaxLength(100).IsRequired();
 
-            builder.HasOne(e => e.Prescription)
-                .WithMany(m => m.PrescrptionMedicaments)
-                .HasForeignKey(m => m.IdPrescription)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(e => e.IdMedicamentNav)
+                .WithMany(e => e.PrescriptionMedicaments)
+                .HasForeignKey(e => e.IdMedicament)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Medicament_Prescription_FK");
 
-            builder.HasOne(e => e.Medicament)
-                .WithMany(m => m.PrescrptionMedicaments)
-                .HasForeignKey(m => m.IdMedicament)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(e => e.IdPrescriptionNav)
+                .WithMany(e => e.PrescriptionMedicaments)
+                .HasForeignKey(e => e.IdPrescription)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Prescription_Medicament_FK");
+
+            var list = new List<PrescriptionMedicament>();
+
+            list.Add(new PrescriptionMedicament
+            {
+                IdMedicament = 1,
+                IdPrescription = 1,
+                Dose = 200,
+                Details = "2 pills in am and pm"
+            });
+
+            list.Add(new PrescriptionMedicament
+            {
+                IdMedicament = 2,
+                IdPrescription = 1,
+                Dose = 250,
+                Details = "2 pills in am and pm"
+            });
+
+            list.Add(new PrescriptionMedicament
+            {
+                IdMedicament = 2,
+                IdPrescription = 2,
+                Dose = 250,
+                Details = "2 pills in am and pm"
+            });
+
+            list.Add(new PrescriptionMedicament
+            {
+                IdMedicament = 3,
+                IdPrescription = 3,
+                Dose = 250,
+                Details = "2 pills in am and pm"
+            });
+
+            builder.HasData(list);
         }
     }
 }

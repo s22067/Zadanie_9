@@ -23,8 +23,8 @@ namespace Zadanie8.Services
                 );
 
             modelBuilder.Entity<Prescription>().HasData(
-                new Models.Prescription() { IdPrescription = 1, Date = DateTime.Now, DueDate = DateTime.Now, IdDoctor = 1, IdPatient = 1 },
-                new Models.Prescription() { IdPrescription = 2, Date = DateTime.Now, DueDate = DateTime.Now, IdDoctor = 1, IdPatient = 2 }
+                new Models.Prescription() { IdPrescription = 1, Date = DateTime.Now, DueDate = DateTime.Now, IdDoctor = 1, Patient = 1 },
+                new Models.Prescription() { IdPrescription = 2, Date = DateTime.Now, DueDate = DateTime.Now, IdDoctor = 1, Patient = 2 }
 
                 );
 

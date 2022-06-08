@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\norbe\\source\\repos\\Zadanie8\\Zadanie8\\Zadanie8.csproj": {}
+    "C:\\Users\\norbe\\Source\\Repos\\Zadanie_10\\Zadanie9\\Zadanie8\\Zadanie8.csproj": {}
   },
   "projects": {
-    "C:\\Users\\norbe\\source\\repos\\Zadanie8\\Zadanie8\\Zadanie8.csproj": {
+    "C:\\Users\\norbe\\Source\\Repos\\Zadanie_10\\Zadanie9\\Zadanie8\\Zadanie8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\norbe\\source\\repos\\Zadanie8\\Zadanie8\\Zadanie8.csproj",
+        "projectUniqueName": "C:\\Users\\norbe\\Source\\Repos\\Zadanie_10\\Zadanie9\\Zadanie8\\Zadanie8.csproj",
         "projectName": "Zadanie8",
-        "projectPath": "C:\\Users\\norbe\\source\\repos\\Zadanie8\\Zadanie8\\Zadanie8.csproj",
+        "projectPath": "C:\\Users\\norbe\\Source\\Repos\\Zadanie_10\\Zadanie9\\Zadanie8\\Zadanie8.csproj",
         "packagesPath": "C:\\Users\\norbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\norbe\\source\\repos\\Zadanie8\\Zadanie8\\obj\\",
+        "outputPath": "C:\\Users\\norbe\\Source\\Repos\\Zadanie_10\\Zadanie9\\Zadanie8\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\norbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.17, )"

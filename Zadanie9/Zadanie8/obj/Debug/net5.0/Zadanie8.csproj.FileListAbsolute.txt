@@ -68,3 +68,13 @@ C:\Users\norbe\source\repos\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.MvcAppli
 C:\Users\norbe\source\repos\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.dll
 C:\Users\norbe\source\repos\Zadanie9\Zadanie8\obj\Debug\net5.0\refint\Zadanie8.dll
 C:\Users\norbe\source\repos\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.pdb
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.csproj.AssemblyReference.cache
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.AssemblyInfoInputs.cache
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.AssemblyInfo.cs
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.csproj.CoreCompileInputs.cache
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.dll
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\refint\Zadanie8.dll
+C:\Users\norbe\Source\Repos\Zadanie_10\Zadanie9\Zadanie8\obj\Debug\net5.0\Zadanie8.pdb

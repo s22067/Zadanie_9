@@ -11,27 +11,25 @@ using System.Text;
 namespace Zadanie8.Models
 {
 
-    public class Prescription
-    {
-         public Prescription()
+        public class Prescription
         {
-            PrescriptionMedicaments = new HashSet<PrescriptionMedicament>();
+            public Prescription()
+            {
+                PrescriptionMedicaments = new HashSet<PrescriptionMedicament>();
+            }
+
+
+            public int IdPrescription { get; set; }
+            public DateTime Date { get; set; }
+            public DateTime DueDate { get; set; }
+            public int IdPatient { get; set; }
+            public int IdDoctor { get; set; }
+
+
+            public virtual Patient IdPatientNav { get; set; }
+            public virtual Doctor IdDoctorNav { get; set; }
+
+
+            public virtual ICollection<PrescriptionMedicament> PrescriptionMedicaments { get; set; }
         }
-
-        [Key]
-        public int IdPrescription { get; set; }
-
-        public DateTime Date { get; set; }
-        public DateTime DueDate { get; set; }
-
-        [ForeignKey("IdPatient")]
-        public int IdPatient { get; set; }
-        public Patient Patient { get; set; }
-        [ForeignKey("IdDoctor")]
-        public int IdDoctor { get; set; }
-        public Doctor Doctor { get; set; }
-
-        public virtual ICollection<PrescriptionMedicament> PrescrptionMedicaments { get; set; }
-
     }
-}

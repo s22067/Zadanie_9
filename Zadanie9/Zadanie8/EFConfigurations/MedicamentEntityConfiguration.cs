@@ -12,14 +12,42 @@ namespace Zadanie8.EFConfigurations
     {
         public void Configure(EntityTypeBuilder<Medicament> builder)
         {
-            builder.ToTable("Medicament");
+            builder.HasKey(e => e.IdMedicament).HasName("IdMedicament_PK");
+            builder.Property(e => e.IdMedicament).UseIdentityColumn();
 
-            builder.HasKey(e => e.IdMedicament);
-            builder.Property(e => e.IdMedicament).ValueGeneratedOnAdd();
+            builder.Property(e => e.Name).HasMaxLength(100).IsRequired();
+            builder.Property(e => e.Description).HasMaxLength(100).IsRequired();
+            builder.Property(e => e.Type).HasMaxLength(100).IsRequired();
 
-            builder.Property(e => e.Name).IsRequired().HasMaxLength(100);
-            builder.Property(e => e.Description).IsRequired().HasMaxLength(100);
-            builder.Property(e => e.Type).IsRequired().HasMaxLength(100);
+            // adding data
+
+            var medicaments = new List<Medicament>();
+
+            medicaments.Add(new Medicament
+            {
+                IdMedicament = 1,
+                Name = "Ibuprofène",
+                Description = "Painkiller, 200mg 3 times a day.",
+                Type = "Anti inflamatory pills"
+            });
+
+            medicaments.Add(new Medicament
+            {
+                IdMedicament = 2,
+                Name = "Happyness",
+                Description = "From 10 to 1000 times a day.",
+                Type = "Anti sadness pills"
+            });
+
+            medicaments.Add(new Medicament
+            {
+                IdMedicament = 3,
+                Name = "Sadness",
+                Description = "CAN HARM YOUR HEALTH.",
+                Type = "Anti happyness pills"
+            });
+
+            builder.HasData(medicaments);
         }
     }
 }

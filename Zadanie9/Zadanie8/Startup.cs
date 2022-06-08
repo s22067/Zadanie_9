@@ -1,19 +1,20 @@
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Task08.Repositories.Implementations;
+using Zadanie8.Middlewares;
 using Zadanie8.Models;
+using Zadanie8.Repositories.Implementations;
+using Zadanie8.Repositories.Interfaces;
 
 namespace Zadanie8
 {
@@ -28,7 +29,8 @@ namespace Zadanie8
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-              services.AddAuthentication(options =>
+        {
+            services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -45,15 +47,18 @@ namespace Zadanie8
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Secret"]))
                 };
             });
-        {
-            services.AddDbContext<ClinicDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zadanie8", Version = "v1" });
-            });
+                services.AddDbContext<ClinicDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
+                services.AddScoped<IHospitalDbRepository, HospitalDbRepository>();
+                services.AddScoped<IAccountsDbRepository, AccountsDbRepository>();
+              
+                services.AddControllers();
+                services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zadanie8", Version = "v1" });
+                });
+            }
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -64,10 +69,11 @@ namespace Zadanie8
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zadanie8 v1"));
             }
 
-            app.UseHttpsRedirection();
+            app.UseMiddleware<ExceptionsLoggerMiddleware>();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

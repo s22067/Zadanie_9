@@ -11,6 +11,7 @@ using Zadanie8.Services;
 using Microsoft.EntityFrameworkCore.Design;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Zadanie8.Configurations;
 
 namespace Zadanie8.Models
 {

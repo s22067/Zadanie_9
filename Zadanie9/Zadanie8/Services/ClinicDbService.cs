@@ -76,7 +76,7 @@ namespace Zadanie8.Services
 
 
             var prescription = await _context.Prescriptions
-                .Where(p => p.IdDoctor == request.IdDoctor && p.IdPatient == request.IdPatient)
+                .Where(p => p.IdDoctor == request.IdDoctor && p.Patient == request.IdPatient)
                 .SingleOrDefaultAsync();
 
             var medicament = await _context.Medicaments
@@ -86,7 +86,7 @@ namespace Zadanie8.Services
 
 
             var response = await _context.Prescriptions
-                .Where(p => p.IdDoctor == request.IdDoctor && p.IdPatient == request.IdPatient)
+                .Where(p => p.IdDoctor == request.IdDoctor && p.Patient == request.IdPatient)
                 .Select(p => new DownloadPrescriptionResponse
                 {
                     Medicament = medicament.Name,

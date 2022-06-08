@@ -9,13 +9,13 @@ namespace Zadanie8.Models
 {
     public class PrescriptionMedicament
     {
-        [Key]
         public int IdMedicament { get; set; }
-        public Medicament Medicament { get; set; }
-        [ForeignKey("IdPresciption")]
         public int IdPrescription { get; set; }
-        public Prescription Prescription { get; set; }
-        public int? Dose { get; set; }
+        public int Dose { get; set; }
         public string Details { get; set; }
+
+
+        public virtual Medicament IdMedicamentNav { get; set; }
+        public virtual Prescription IdPrescriptionNav { get; set; }
     }
 }
